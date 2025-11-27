@@ -3,20 +3,39 @@
 document.addEventListener('DOMContentLoaded', function() {
     
     // ===================================
-    // 1. NAVEGAÇÃO RESPONSIVA (MENU TOGGLE)
+    // 1. NAVEGAÇÃO RESPONSIVA (MENU TOGGLE) - CORREÇÃO DE BUG
     // ===================================
     const menuToggle = document.querySelector('.menu-toggle');
     const navMenu = document.querySelector('.nav-menu');
 
-    menuToggle.addEventListener('click', function() {
-        navMenu.classList.toggle('active');
-    });
+    // Verifica se os elementos foram encontrados antes de adicionar o listener
+    if (menuToggle && navMenu) {
+        menuToggle.addEventListener('click', function() {
+            // Alterna a classe 'active' para exibir/ocultar o menu via CSS
+            navMenu.classList.toggle('active');
+            
+            // Opcional: Alternar o ícone de hambúrguer para 'X' (requer mais CSS, mas o toggle funciona)
+            const icon = menuToggle.querySelector('i');
+            if (navMenu.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times'); // 'fa-times' é o ícone de fechar (X)
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+    }
 
     // Fecha o menu se um link for clicado (útil para navegação de seção única)
     navMenu.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
-            if (window.innerWidth <= 768) {
+            // Fecha apenas se o menu estiver ativo E se a tela for pequena
+            if (navMenu.classList.contains('active') && window.innerWidth <= 768) {
                 navMenu.classList.remove('active');
+                // Restaura o ícone após o fechamento
+                const icon = menuToggle.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
             }
         });
     });
