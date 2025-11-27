@@ -113,7 +113,7 @@ a {
     padding: 220px 5% 150px;
     text-align: center;
     background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), 
-                url("./assets/hero01.jpg") center/cover no-repeat;
+                url("../assets/hero/hero01.jpg") center/cover no-repeat;
     min-height: 85vh;
 }
 
