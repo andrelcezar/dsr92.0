@@ -1,0 +1,444 @@
+/* ======================== */
+/* 0. RESET E VARIÁVEIS     */
+/* ======================== */
+:root {
+    --color-primary: #0099ff; /* Azul Destaque/Links */
+    --color-secondary: #ff9933; /* Laranja CTA Principal */
+    --color-dark: #000;
+    --color-light: #fff;
+    --color-bg-dark: #0a0a0a; /* Fundo principal escuro */
+    --color-bg-section: #151515; /* Fundo para seções de destaque */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /* Fonte Michroma */
+    font-family: 'Michroma', sans-serif; 
+    background-color: var(--color-dark);
+    color: var(--color-light);
+    line-height: 1.6;
+}
+
+h2 {
+    font-size: 2em;
+    margin-bottom: 50px;
+    color: var(--color-primary);
+    text-transform: uppercase;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-primary);
+}
+
+/* ======================== */
+/* 1. HEADER E NAVEGAÇÃO    */
+/* ======================== */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    background-color: rgba(0, 0, 0, 0.95);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+.logo a {
+    color: var(--color-primary);
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+    line-height: 1;
+}
+
+.logo-subtitle {
+    font-size: 0.5em;
+    display: block;
+    line-height: 1;
+    color: #ccc;
+    font-weight: normal;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+.nav-menu a {
+    color: var(--color-light);
+    text-decoration: none;
+    padding: 5px 0;
+    transition: color 0.3s;
+    border-bottom: 2px solid transparent;
+}
+
+.nav-menu a:hover,
+.nav-menu a.active {
+    color: var(--color-primary);
+    border-bottom-color: var(--color-primary);
+}
+
+.cta-mdr {
+    background-color: var(--color-primary);
+    color: var(--color-dark);
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.cta-mdr:hover {
+    background-color: #33bbff;
+}
+
+/* ======================== */
+/* 2. HERO SECTION          */
+/* ======================== */
+.hero-section {
+    padding: 220px 5% 150px;
+    text-align: center;
+    /* Usa imagem local e mantém o gradiente para legibilidade */
+    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), 
+                url("../assets/hero/hero01.jpg") center/cover no-repeat;
+    min-height: 85vh;
+}
+
+.hero-section h1 {
+    font-family: 'Michroma', sans-serif;
+    font-size: 3.5em;
+    margin-bottom: 20px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.1;
+}
+
+.hero-section p {
+    font-size: 1.2em;
+    margin-bottom: 40px;
+    color: #ccc;
+}
+
+.hero-ctas {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.btn {
+    padding: 15px 30px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s;
+    font-family: 'Michroma', sans-serif;
+}
+
+.btn-primary {
+    background-color: var(--color-secondary); 
+    color: var(--color-dark);
+    border: none;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--color-light);
+    border: 2px solid var(--color-light);
+}
+
+.btn-primary:hover {
+    background-color: #e68029;
+}
+
+.btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.btn-primary-small {
+    padding: 10px 20px;
+    background-color: var(--color-primary);
+    color: var(--color-dark);
+    border-radius: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 0.9em;
+    font-family: 'Michroma', sans-serif;
+}
+
+/* ======================== */
+/* 3. COUNTER SECTION (Credibilidade) */
+/* ======================== */
+.counter-section {
+    padding: 60px 5%;
+    background-color: var(--color-bg-section);
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    border-top: 1px solid var(--color-primary);
+    border-bottom: 1px solid var(--color-primary);
+}
+
+.counter-box {
+    flex-basis: 20%;
+    padding: 10px;
+}
+
+.counter-number {
+    font-size: 3em;
+    font-weight: bold;
+    color: var(--color-secondary);
+    margin-bottom: 5px;
+    font-family: 'Michroma', sans-serif;
+}
+
+.counter-box p {
+    font-size: 1.1em;
+    color: #ccc;
+    text-transform: uppercase;
+    line-height: 1.2;
+}
+
+/* ======================== */
+/* 4. SOLUTIONS OVERVIEW    */
+/* ======================== */
+.services-overview {
+    padding: 80px 5%;
+    background-color: var(--color-bg-dark);
+    text-align: center;
+}
+
+.solutions-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.solution-card {
+    background-color: #1a1a1a;
+    padding: 30px;
+    border-radius: 8px;
+    text-align: left;
+    flex: 1;
+    max-width: 350px;
+    border-top: 5px solid var(--color-secondary);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.solution-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(255, 153, 51, 0.2);
+}
+
+.solution-card h3 {
+    color: var(--color-primary);
+    margin-bottom: 15px;
+    font-family: 'Michroma', sans-serif;
+}
+
+.solution-card p {
+    color: #ccc;
+    margin-bottom: 20px;
+    font-size: 0.95em;
+}
+
+.solution-card a {
+    color: var(--color-secondary);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.solutions-cta {
+    margin-top: 40px;
+}
+
+.solutions-cta p {
+    font-size: 1.1em;
+    color: #ccc;
+    margin-bottom: 10px;
+}
+
+/* ======================== */
+/* 5. PARTNERS SECTION (CARROSSEL) */
+/* ======================== */
+.partners-section {
+    padding: 80px 5%;
+    background-color: var(--color-dark);
+    text-align: center;
+    overflow: hidden; /* Oculta as partes do carrossel fora da área visível */
+}
+
+.partners-section .trust-title {
+    margin-bottom: 40px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #ccc;
+}
+
+.carousel-container {
+    width: 100%;
+    display: flex; /* Permite que as duas trilhas fiquem lado a lado */
+    margin-top: 30px;
+    white-space: nowrap; /* Impede que os logos quebrem a linha */
+}
+
+.carousel-track {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-width: 100%; /* Cada trilha deve ocupar 100% da largura do container */
+    animation: slide 30s linear infinite; /* 30s de duração, rodando linearmente e infinitamente */
+    opacity: 0.7;
+}
+
+.partner-logo {
+    display: inline-block;
+    padding: 0 40px; /* Espaçamento entre os logos */
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #444; 
+}
+
+/* Define a animação de slide: move o carrossel em 50% de sua largura total */
+@keyframes slide {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        /* Move 50% para a esquerda (a largura de uma trilha) */
+        transform: translateX(-100%); 
+    }
+}
+
+/* ======================== */
+/* 6. TECHNICAL DNA SECTION */
+/* ======================== */
+.dna-section {
+    padding: 80px 5%;
+    background-color: var(--color-bg-section);
+    text-align: center;
+}
+
+.dna-text {
+    max-width: 800px;
+    margin: 0 auto 40px;
+    font-size: 1.1em;
+    color: #ccc;
+}
+
+.dna-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dna-stats {
+    margin-bottom: 30px;
+}
+
+.dna-stats p {
+    color: #ccc;
+    font-size: 1.2em;
+}
+
+.dna-certs {
+    color: #999;
+    font-size: 0.9em;
+    max-width: 700px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px 30px;
+}
+
+.dna-certs i {
+    color: var(--color-primary);
+    margin-right: 5px;
+}
+
+/* ======================== */
+/* 7. BLOG SECTION          */
+/* ======================== */
+.blog-section {
+    padding: 80px 5%;
+    background-color: var(--color-dark);
+    text-align: center;
+}
+
+.blog-post-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.blog-post-card {
+    background-color: var(--color-bg-section);
+    padding: 20px;
+    border-radius: 8px;
+    flex: 1;
+    max-width: 350px;
+    text-align: left;
+    border-left: 3px solid var(--color-primary);
+}
+
+.blog-post-card h3 {
+    font-size: 1.1em;
+    color: var(--color-light);
+    margin-bottom: 5px;
+    font-family: 'Michroma', sans-serif;
+}
+
+.blog-post-card p {
+    font-size: 0.8em;
+    color: #999;
+    margin-bottom: 15px;
+}
+
+.blog-post-card a {
+    color: var(--color-secondary);
+    font-weight: bold;
+}
+
+
+/* ======================== */
+/* 8. CONTACT FORM          */
+/* ======================== */
+.contact-form-section {
+    padding: 80px 5%;
+    background-color: var(--color-bg-dark);
+    text-align: center;
+}
+
+.contact-form-section h2 {
+    color: var(--color-light);
+    font-size: 1.8em;
+}
+
+#contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    display: grid;
+    gap: 20px;
+}
+
+#contact-form input,
+#contact-form select,
+#contact-form textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #3
