@@ -17,7 +17,6 @@
 }
 
 body {
-    /* Fonte Michroma */
     font-family: 'Michroma', sans-serif; 
     background-color: var(--color-dark);
     color: var(--color-light);
@@ -68,6 +67,11 @@ a {
     font-weight: normal;
 }
 
+/* Esconde o botão de toggle em telas grandes por padrão */
+.menu-toggle {
+    display: none; 
+}
+
 .nav-menu {
     display: flex;
     gap: 25px;
@@ -108,9 +112,8 @@ a {
 .hero-section {
     padding: 220px 5% 150px;
     text-align: center;
-    /* Usa imagem local e mantém o gradiente para legibilidade */
     background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), 
-                url("../assets/hero/hero01.jpg") center/cover no-repeat;
+                url("./assets/hero01.jpg") center/cover no-repeat;
     min-height: 85vh;
 }
 
@@ -279,7 +282,7 @@ a {
     padding: 80px 5%;
     background-color: var(--color-dark);
     text-align: center;
-    overflow: hidden; /* Oculta as partes do carrossel fora da área visível */
+    overflow: hidden; 
 }
 
 .partners-section .trust-title {
@@ -292,35 +295,33 @@ a {
 
 .carousel-container {
     width: 100%;
-    display: flex; /* Permite que as duas trilhas fiquem lado a lado */
+    display: flex; 
     margin-top: 30px;
-    white-space: nowrap; /* Impede que os logos quebrem a linha */
+    white-space: nowrap; 
 }
 
 .carousel-track {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    min-width: 100%; /* Cada trilha deve ocupar 100% da largura do container */
-    animation: slide 30s linear infinite; /* 30s de duração, rodando linearmente e infinitamente */
+    min-width: 100%; 
+    animation: slide 30s linear infinite; 
     opacity: 0.7;
 }
 
 .partner-logo {
     display: inline-block;
-    padding: 0 40px; /* Espaçamento entre os logos */
+    padding: 0 40px; 
     font-size: 1.2em;
     font-weight: bold;
     color: #444; 
 }
 
-/* Define a animação de slide: move o carrossel em 50% de sua largura total */
 @keyframes slide {
     from {
         transform: translateX(0);
     }
     to {
-        /* Move 50% para a esquerda (a largura de uma trilha) */
         transform: translateX(-100%); 
     }
 }
@@ -441,4 +442,270 @@ a {
 #contact-form textarea {
     width: 100%;
     padding: 15px;
-    border: 1px solid #3
+    border: 1px solid #333;
+    background-color: #1a1a1a;
+    color: var(--color-light);
+    border-radius: 5px;
+    font-size: 1em;
+    font-family: Arial, sans-serif;
+}
+
+#contact-form textarea {
+    resize: vertical;
+}
+
+#contact-form button {
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.form-status {
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+
+/* ======================== */
+/* 9. FOOTER                */
+/* ======================== */
+.footer {
+    background-color: #000;
+    padding: 40px 5%;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: grid;
+    grid-template-columns: 2fr 1fr 2fr; /* Colunas para Contato, Acesso Rápido e Social/Copyright */
+    gap: 30px;
+    text-align: left;
+    align-items: start;
+}
+
+.footer p {
+    font-size: 0.9em;
+    color: #999;
+    margin-bottom: 5px;
+}
+
+.footer-nav {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-nav a {
+    color: #999;
+    margin-bottom: 5px;
+    transition: color 0.3s;
+}
+
+.footer-nav a:hover {
+    color: var(--color-primary);
+}
+
+.footer-bottom {
+    grid-column: 1 / -1; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
+    margin-top: 20px;
+}
+
+.footer-bottom p {
+    font-size: 0.8em;
+    color: #666;
+}
+
+.social-links a {
+    color: #666;
+    font-size: 1.5em;
+    margin-left: 15px;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: var(--color-primary);
+}
+
+
+/* ======================== */
+/* 10. MEDIA QUERIES (RESPONSIVIDADE) */
+/* ======================== */
+
+/* Estilos para TABLETS (Largura máxima: 1024px) */
+@media (max-width: 1024px) {
+    
+    .nav-menu {
+        gap: 15px;
+    }
+    
+    .hero-section h1 {
+        font-size: 2.8em;
+    }
+
+    .counter-number {
+        font-size: 2.5em;
+    }
+
+    /* Soluções e Blog em colunas menores */
+    .solutions-grid, .blog-post-grid {
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+    
+    .solution-card, .blog-post-card {
+        flex-basis: 45%; 
+        max-width: none;
+    }
+    
+    .footer {
+        grid-template-columns: 1fr 1fr; 
+    }
+    
+    .footer-bottom {
+        grid-column: 1 / 3; 
+    }
+}
+
+/* Estilos para CELULARES (Largura máxima: 768px) */
+@media (max-width: 768px) {
+    
+    /* === NAVEGAÇÃO / HEADER === */
+    .header {
+        /* Alinha logo e botão de menu na mesma linha */
+        flex-direction: row; 
+        align-items: center;
+        padding: 15px 5%;
+        position: relative; /* Para garantir que o menu dropdown fique visível */
+    }
+
+    /* Mostra o botão de menu */
+    .menu-toggle {
+        display: block;
+        background: none;
+        border: none;
+        color: var(--color-light);
+        font-size: 1.5em;
+        cursor: pointer;
+        padding: 0;
+        margin-left: auto; /* Empurra para o canto direito */
+        z-index: 1001;
+    }
+    
+    /* Estilo do menu em mobile (Oculto por padrão) */
+    .nav-menu {
+        display: none; /* Oculta por padrão no mobile */
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 100%; /* Abaixo do header */
+        left: 0;
+        background-color: var(--color-dark);
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 20px 0;
+        z-index: 999;
+        text-align: center;
+    }
+
+    /* Classe JavaScript para mostrar o menu */
+    .nav-menu.active {
+        display: flex;
+    }
+
+    .nav-menu a {
+        width: 100%;
+        padding: 10px 0;
+        border-bottom: none;
+    }
+
+    .cta-mdr {
+        margin-top: 15px;
+    }
+
+    /* === HERO === */
+    .hero-section {
+        padding: 120px 5% 80px; /* Reduz o padding superior por causa do header flutuante */
+        min-height: auto;
+    }
+
+    .hero-section h1 {
+        font-size: 1.8em;
+        margin-top: 20px;
+    }
+
+    .hero-section p {
+        font-size: 1em;
+    }
+    
+    .hero-ctas {
+        flex-direction: column;
+    }
+    
+    .btn {
+        width: 100%;
+        margin-bottom: 10px;
+        padding: 12px 20px;
+        font-size: 0.9em;
+    }
+
+    /* === CONTADORES === */
+    .counter-section {
+        flex-wrap: wrap;
+        padding: 40px 5%;
+    }
+
+    .counter-box {
+        flex-basis: 50%; 
+        margin-bottom: 20px;
+    }
+
+    .counter-number {
+        font-size: 2em;
+    }
+
+    .counter-box p {
+        font-size: 0.8em;
+    }
+
+    /* === GRADES (Soluções, Blog) === */
+    .solutions-grid, .blog-post-grid {
+        flex-direction: column;
+        gap: 25px;
+    }
+    
+    .solution-card, .blog-post-card {
+        flex-basis: 100%; 
+    }
+
+    /* === CARROSSEL (Logos) === */
+    .carousel-track {
+        /* Aumenta a velocidade do carrossel para compensar a largura menor */
+        animation-duration: 20s; 
+    }
+
+    .partner-logo {
+        padding: 0 20px; /* Reduz o espaçamento */
+        font-size: 1em;
+    }
+    
+    /* === RODAPÉ === */
+    .footer {
+        grid-template-columns: 1fr; /* Apenas uma coluna no rodapé */
+        text-align: center;
+        gap: 20px;
+    }
+    
+    .footer-nav {
+        align-items: center;
+        margin-top: 10px;
+    }
+    
+    .footer-bottom {
+        grid-column: 1 / 2;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .social-links {
+        order: -1; 
+    }
+}
