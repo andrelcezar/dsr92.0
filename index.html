@@ -15,21 +15,22 @@
     <header class="header">
         <div class="logo">
             <a href="#">
-                <img src="./assets/logo/dsr903.png" width="250">
+               <img src="./assets/logo/dsr903.png" width="250px">
             </a>
         </div>
+        
         <button class="menu-toggle" aria-label="Toggle navigation">
-        <i class="fas fa-bars"></i>
-    </button>
+            <i class="fas fa-bars"></i>
+        </button>
 
-    <nav class="nav-menu">
-        <a href="#" class="active">Home</a>
-        <a href="#solucoes">Soluções</a>
-        <a href="#servicos">Serviços Especializados</a>
-        <a href="#contato">Contato</a>
-        <a href="#blog">Blog</a>
-        <a href="#contato" class="cta-mdr">MDR</a>
-    </nav>
+        <nav class="nav-menu">
+            <a href="#" class="active">Home</a>
+            <a href="#solucoes">Soluções</a>
+            <a href="#servicos">Serviços Especializados</a>
+            <a href="#contato">Contato</a>
+            <a href="#blog">Blog</a>
+            <a href="#contato" class="cta-mdr">MDR</a>
+        </nav>
     </header>
 
     <section class="hero-section">
@@ -147,19 +148,55 @@
                 <a href="#">Leia Mais</a>
             </div>
         </div>
-
-        <div>
-        <a href="#" class="btn btn-secondary" style="margin-top: 20px;" hidden>VER TODOS OS ARTIGOS</a>
-        </div>
+        <a href="#" class="btn btn-secondary" style="margin-top: 40px;">VER TODOS OS ARTIGOS</a>
     </section>
 
     <section class="contact-form-section" id="contato">
-        <h2>NÃO ENCONTROU O QUE PRECISAVA? FALE COM UM ESPECIALISTA.</h2>
-        <form id="contact-form">
-            <input type="text" name="name" placeholder="Seu Nome Completo" required>
-            <input type="email" name="email" placeholder="Seu E-mail Corporativo" required>
-            <input type="text" name="company" placeholder="Nome da Sua Empresa" required>
-            <select name="service" required>
-                <option value="">Interesse Principal...</option>
-                <option value="MDR">Serviços Gerenciados (MDR)</option>
-                <option value="Ransomware">Defesa contra
+    <h2>NÃO ENCONTROU O QUE PRECISAVA? FALE COM UM ESPECIALISTA.</h2>
+    <form id="contact-form">
+        <input type="text" name="name" placeholder="Seu Nome Completo" required>
+        <input type="email" name="email" placeholder="Seu E-mail Corporativo" required>
+        <input type="text" name="company" placeholder="Nome da Sua Empresa" required>
+        <select name="service" required>
+            <option value="">Interesse Principal...</option>
+            <option value="MDR">Serviços Gerenciados (MDR)</option>
+            <option value="Ransomware">Defesa contra Ransomware</option>
+            <option value="Consultoria">Consultoria e LGPD</option>
+            <option value="Outro">Outro</option>
+        </select>
+        <textarea name="message" placeholder="Sua Mensagem / Detalhes" rows="5"></textarea>
+        <button type="submit" class="btn btn-primary">ENVIAR SOLICITAÇÃO</button>
+        <p class="form-status" id="form-message"></p>
+    </form>
+</section>
+
+<footer class="footer">
+    <div>
+        <p style="color: var(--color-primary); font-size: 1.1em; margin-bottom: 10px;">Contato</p>
+        <p>contato@dsr9.com</p>
+        <p>+55 (11) 3628-7880</p>
+        <p>Av. Paulista, 2028 - 11º andar - São Paulo - SP</p>
+    </div>
+    <div>
+        <p style="color: var(--color-primary); font-size: 1.1em; margin-bottom: 10px;">Acesso Rápido</p>
+        <nav class="footer-nav">
+            <a href="#">Início</a>
+            <a href="#solucoes">Soluções</a>
+            <a href="#blog">Blog</a>
+            <a href="#">Sobre</a>
+            <a href="#">Trabalhe Conosco</a>
+        </nav>
+    </div>
+    <div class="footer-bottom">
+         <p>Copyright © 2025 DSR9 . <a href="#">Política de Privacidade</a> .</p>
+         <div class="social-links">
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+         </div>
+    </div>
+</footer>
+
+    <script src="./script/script.js"></script>
+</body>
+</html>
