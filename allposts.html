@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog DSR9 - Notícias e Dicas de Cibersegurança</title>
+    <title>Arquivo Completo do Blog DSR9</title>
     
-    <meta name="description" content="Artigos, notícias e dicas essenciais sobre cibersegurança, ameaças digitais e as últimas tendências do setor pela DSR9.">
-    <meta name="keywords" content="Blog, Cibersegurança, Notícias, Dicas de Segurança, LGPD, Ransomware, IA">
+    <meta name="description" content="Arquivo completo de artigos, notícias e dicas essenciais sobre cibersegurança pela DSR9.">
+    <meta name="keywords" content="Arquivo Blog, Cibersegurança, Notícias, Dicas de Segurança">
     
     <link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet">
     
@@ -39,20 +39,20 @@
     </nav>
     </header>
     <section class="blog-header">
-        <h1>Blog e Notícias</h1>
-        <p>Mantenha-se atualizado com as últimas novidades, análises e tendências do mundo da cibersegurança. Conhecimento é a sua primeira linha de defesa.</p>
+        <h1>Blog DSR9</h1>
+        <p>Acesse todos os artigos publicados em nosso blog. Conhecimento contínuo para sua defesa digital.</p>
     </section>
 
     <section class="blog-section">
         <div id="blog-posts-container" class="blog-post-grid">
-            <p class="loading-message">Carregando notícias do blog...</p>
+            <p class="loading-message">Carregando todas as notícias do arquivo...</p>
         </div>
     </section>
-
-     </div>
+    
+    </div>
 
         <div style="text-align: center; padding-bottom: 80px; background-color: var(--color-dark);">
-        <a href="./allposts.html" class="btn btn-secondary">VER TODAS AS NOTÍCIAS</a>
+        <a href="./blog.html" class="btn btn-secondary">Voltar para Recentes</a>
     </div>
 
     <footer class="footer">
@@ -80,7 +80,6 @@
                 <a href="#" aria-label="Facebook da DSR9"><i class="fab fa-facebook"></i></a>
              </div>
         </div>
-        
     </footer>
     <script src="./script/script.js"></script>
     
@@ -90,23 +89,19 @@
             const container = document.getElementById('blog-posts-container');
             const CORS_PROXY = 'https://api.rss2json.com/v1/api.json?rss_url=';
 
-            // Adicionamos a função de tratamento de clique
+            // FUNÇÃO loadPost É REUTILIZADA, SEM MUDANÇAS
             window.loadPost = function(index, itemLink) {
                 const postData = JSON.parse(localStorage.getItem('dsr9_blog_posts'))[index];
-                
-                // Salva o post específico que será carregado na próxima página
                 localStorage.setItem('dsr9_current_post', JSON.stringify(postData));
 
-                // Se o item for externo (sem conteúdo completo no feed), redireciona diretamente
-                if (postData.content.length < 500) { // Exemplo: se o conteúdo for muito curto, vai para o link original
+                if (postData.content.length < 500) {
                     window.open(itemLink, '_blank');
                 } else {
-                    // Redireciona para a página de visualização do post local
                     window.location.href = 'post.html';
                 }
             };
 
-            // Função para extrair a primeira imagem do conteúdo
+            // Funções auxiliares (extractImage, formatDate, cleanSnippet) são as mesmas
             function extractImage(content) {
                 const tempDiv = document.createElement('div');
                 tempDiv.innerHTML = content;
@@ -114,13 +109,11 @@
                 return img ? img.src : './assets/placeholder/default-blog.jpg';
             }
 
-            // Função para formatar a data
             function formatDate(dateString) {
                 const options = { day: 'numeric', month: 'long', year: 'numeric' };
                 return new Date(dateString).toLocaleDateString('pt-BR', options);
             }
             
-            // Função para limpar tags HTML do snippet
             function cleanSnippet(html) {
                 const tempDiv = document.createElement('div');
                 tempDiv.innerHTML = html;
@@ -145,17 +138,17 @@
                         return;
                     }
                     
-                    // Salva todos os posts no localStorage
+                    // Salva todos os posts no localStorage (necessário para post.html)
                     localStorage.setItem('dsr9_blog_posts', JSON.stringify(data.items));
 
-                    data.items.slice(0, 6).forEach((item, index) => { // Limita aos 6 posts
+                    // *** ALTERAÇÃO CHAVE: REMOÇÃO DO .slice(0, 6) ***
+                    data.items.forEach((item, index) => { // AGORA RENDERIZA TODOS OS POSTS
                         const postLink = item.link;
                         const postTitle = item.title;
                         const postDate = formatDate(item.pubDate);
                         const postSnippet = cleanSnippet(item.description || item.content);
                         let imageUrl = item.thumbnail || extractImage(item.content);
 
-                        // O link agora chama a função loadPost
                         const postCard = `
                             <div class="blog-post-card">
                                 <img src="${imageUrl}" alt="Imagem de capa do post: ${postTitle}" onerror="this.onerror=null;this.src='./assets/placeholder/default-blog.jpg';">
