@@ -79,3 +79,7 @@ Este é um projeto **front-end estático** e pode ser executado diretamente em s
 ---
 
 ## 🗺️ Estrutura de Arquivos
+
+dsr92.0/ ├── index.html # Estrutura principal do site (HTML) ├── css/ │ └── style.css # Estilização completa do site (CSS) ├── script/ │ └── script.js # Comportamento interativo e animações (JS) └── assets/ ├── logo/ # Logos da DSR9 ├── hero/ # Imagens de fundo da seção Hero └── cert/ # Imagens de certificações
+
+
