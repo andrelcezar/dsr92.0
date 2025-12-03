@@ -22,7 +22,6 @@ body {
     background-color: var(--color-dark);
     color: var(--color-light);
     line-height: 1.6;
-    /* Suaviza o scroll para navegação de seção única */
     scroll-behavior: smooth; 
 }
 
@@ -111,11 +110,21 @@ a {
     background-color: #33bbff;
 }
 
+
+/* Adicione isso ao seu arquivo style.css */
+/* O scroll-margin-top deve ser maior que a altura do seu header fixo (cerca de 80px a 100px) */
+#sobre, 
+#solucoes, 
+#servicos, 
+#contato {
+    scroll-margin-top: 100px;
+}
+
 /* ======================== */
 /* 2. HERO SECTION          */
 /* ======================== */
 .hero-section {
-    padding: 220px 5% 150px;
+    padding: 220px 5% 265px;
     text-align: center;
     background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), 
                 url("../assets/hero/hero01.jpg") center/cover no-repeat;
@@ -129,10 +138,11 @@ a {
     margin-left: auto;
     margin-right: auto;
     line-height: 1.1;
+    color: var(--color-light); /* Corrigido para garantir que o H1 seja branco */
 }
 
 .hero-section h2 {
-    font-size: 1.5em; /* H2 como subtítulo do H1 */
+    font-size: 1.5em;
     margin-bottom: 20px;
     color: var(--color-secondary);
 }
@@ -178,7 +188,6 @@ a {
 .btn-secondary:hover {
     background-color: rgba(255, 255, 255, 0.1);
 }
-
 
 /* ======================== */
 /* 3. ABOUT SECTION       */
@@ -244,6 +253,22 @@ a {
     font-size: 0.9em;
 }
 
+/* --- Responsividade para a seção About --- */
+@media (max-width: 900px) {
+    .about-content {
+        flex-direction: column;
+    }
+
+    .about-text, .about-stats {
+        flex: none;
+        width: 100%;
+    }
+    
+    .about-stats {
+        margin-top: 30px;
+    }
+}
+
 
 /* ======================== */
 /* 4. COUNTER SECTION (Credibilidade) */
@@ -277,6 +302,7 @@ a {
     text-transform: uppercase;
     line-height: 1.2;
 }
+
 
 /* ======================== */
 /* 5. SOLUTIONS OVERVIEW    */
@@ -369,14 +395,15 @@ a {
     font-size: 1.2em;
     font-weight: bold;
     color: #444; 
+    flex-shrink: 0;
 }
 
+/* Ajuste Chave: Move 50% para um loop contínuo (o JS duplica o conteúdo) */
 @keyframes slide {
     from {
         transform: translateX(0);
     }
     to {
-        /* Desloca a largura de um conjunto de logos */
         transform: translateX(-50%); 
     }
 }
@@ -413,7 +440,7 @@ a {
     text-transform: uppercase;
 }
 
-/* Estilos do Slider de Certificações (carrossel infinito por CSS/JS) */
+/* Estilos do Slider de Certificações (carrossel infinito) */
 .cert-slider-container {
     width: 100%;
     overflow: hidden; 
@@ -423,12 +450,12 @@ a {
 
 .cert-slider-track {
     display: flex;
-    animation: slideCert 45s linear infinite; 
+    animation: slideCert 40s linear infinite; 
     white-space: nowrap;
 }
 
 .cert-slider-track img {
-    height: 60px; 
+    height: 90px; 
     width: auto;
     margin: 0 20px;
     object-fit: contain;
@@ -441,7 +468,8 @@ a {
     filter: grayscale(0%) opacity(1); 
 }
 
-/* Animação CSS para o loop contínuo (duplica o conteúdo, anima 50% da largura total) */
+/* Ajuste Chave: Animação CSS para o loop contínuo das certificações. */
+/* Move 50% da largura total (que é 2x o conteúdo original devido ao JS) */
 @keyframes slideCert {
     0% {
         transform: translateX(0);
@@ -451,55 +479,139 @@ a {
     }
 }
 
-
 /* ======================== */
 /* 8. BLOG SECTION          */
 /* ======================== */
-.blog-section {
-    padding: 80px 5%;
-    background-color: var(--color-dark);
+.blog-header {
+    background-color: var(--color-bg-section);
+    padding: 100px 5%;
+    padding-top: 150px; /* Ajuste para o header fixo */
     text-align: center;
 }
 
+.blog-header h1 {
+    font-size: 3em;
+    color: var(--color-primary);
+    margin-bottom: 20px;
+}
+
+.blog-header p {
+    font-size: 1.2em;
+    max-width: 800px;
+    margin: 0 auto;
+    color: #ccc;
+}
+
+.blog-section {
+    padding: 60px 5%;
+    background-color: var(--color-dark);
+}
+
+/* Usando a classe blog-post-grid (similar ao solutions-grid) */
 .blog-post-grid {
     display: flex;
-    justify-content: center;
+    flex-wrap: wrap;
     gap: 30px;
+    justify-content: center;
+    min-height: 400px; /* Para evitar colapso antes do carregamento do RSS */
 }
 
 .blog-post-card {
     background-color: var(--color-bg-section);
-    padding: 20px;
+    border: 1px solid #1a1a1a;
     border-radius: 8px;
-    flex: 1;
-    max-width: 350px;
-    text-align: left;
-    border-left: 3px solid var(--color-primary);
-    transition: transform 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    flex-basis: calc(33.333% - 20px); 
+    min-width: 300px; 
 }
 
 .blog-post-card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0, 153, 255, 0.2);
 }
 
-.blog-post-card h3 {
-    font-size: 1.1em;
+.blog-post-card img {
+    width: 100%;
+    height: 200px; /* Altura fixa para a imagem */
+    object-fit: cover;
+    transition: opacity 0.3s;
+}
+
+.card-content {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.card-content h3 {
+    font-size: 1.3em;
     color: var(--color-light);
-    margin-bottom: 5px;
-    font-family: var(--font-stack);
-}
-
-.blog-post-card p {
-    font-size: 0.8em;
-    color: #999;
     margin-bottom: 15px;
+    line-height: 1.4;
 }
 
-.blog-post-card a {
-    color: var(--color-secondary);
+.card-content h3 a {
+    color: var(--color-light);
+    transition: color 0.3s;
+}
+
+.card-content h3 a:hover {
+    color: var(--color-primary);
+}
+
+.card-content p.date {
+    font-size: 0.8em;
+    color: #888;
+    margin-bottom: 10px;
+}
+
+.card-content .snippet {
+    font-size: 0.95em;
+    color: #ccc;
+    margin-bottom: 20px;
+}
+
+.read-more {
+    display: inline-block;
+    color: var(--color-primary);
     font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    margin-top: auto;
 }
 
+.loading-message {
+    width: 100%;
+    text-align: center;
+    color: #888;
+    font-size: 1.5em;
+    margin-top: 50px;
+}
+
+/* Media Queries */
+
+@media (max-width: 1024px) {
+    .blog-post-card {
+        flex-basis: calc(50% - 15px);
+    }
+}
+
+@media (max-width: 768px) {
+    .blog-header h1 {
+        font-size: 2.5em;
+    }
+    .blog-header {
+        padding-top: 100px;
+    }
+    .blog-post-card {
+        flex-basis: 100%;
+    }
+}
 
 /* ======================== */
 /* 9. CONTACT FORM          */
@@ -534,7 +646,7 @@ a {
     color: var(--color-light);
     border-radius: 5px;
     font-size: 1em;
-    font-family: sans-serif; /* Usar fonte mais legível para inputs */
+    font-family: sans-serif;
 }
 
 #contact-form textarea {
@@ -664,14 +776,12 @@ a {
         position: fixed; /* Mantido fixed para navegação melhor em mobile */
     }
 
-    /* Mostra o botão de menu */
     .menu-toggle {
         display: block;
         margin-left: auto; 
         z-index: 1001;
     }
     
-    /* Estilo do menu em mobile (Oculto por padrão) */
     .nav-menu {
         display: none; 
         flex-direction: column;
@@ -686,7 +796,6 @@ a {
         text-align: center;
     }
 
-    /* Classe JavaScript para mostrar o menu */
     .nav-menu.active {
         display: flex;
     }
@@ -731,20 +840,6 @@ a {
         font-size: 0.9em;
     }
 
-    /* === ABOUT === */
-     .about-content {
-        flex-direction: column;
-    }
-
-    .about-text, .about-stats {
-        flex: none;
-        width: 100%;
-    }
-    
-    .about-stats {
-        margin-top: 30px;
-    }
-
     /* === CONTADORES === */
     .counter-section {
         flex-wrap: wrap;
@@ -774,14 +869,19 @@ a {
         flex-basis: 100%; 
     }
 
-    /* === CARROSSEL (Logos) === */
-    .carousel-track {
+    /* === CARROSSEL (Logos e Certificados) === */
+    .carousel-track, .cert-slider-track {
         animation-duration: 20s; 
     }
 
     .partner-logo {
         padding: 0 20px; 
         font-size: 1em;
+    }
+    
+    .cert-slider-track img {
+        height: 40px; 
+        margin: 0 10px;
     }
     
     /* === RODAPÉ === */

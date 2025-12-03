@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog DSR9 - Notícias e Dicas de Cibersegurança</title>
+    
+    <meta name="description" content="Artigos, notícias e dicas essenciais sobre cibersegurança, ameaças digitais e as últimas tendências do setor pela DSR9.">
+    <meta name="keywords" content="Blog, Cibersegurança, Notícias, Dicas de Segurança, LGPD, Ransomware, IA">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/blog.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+</head>
+<body>
+
+    <header class="header">
+    <div class="logo">
+        <a href="index.html">
+           <img src="./assets/logo/dsr903.png" width="250px" alt="Logo DSR9 - Cibersegurança">
+        </a>
+    </div>
+    
+    <button class="menu-toggle" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <nav class="nav-menu">
+        <a href="index.html">Home</a>
+        <a href="index.html#sobre">Sobre a DSR9</a> 
+        <a href="index.html#solucoes">Soluções</a> 
+        <a href="index.html#servicos">Serviços Especializados</a> 
+        <a href="index.html#contato">Contato</a> 
+        <a href="blog.html" class="active">Blog</a>
+        <a href="index.html#contato" class="cta-mdr" hidden>MDR</a>
+    </nav>
+    </header>
+    <section class="blog-header">
+        <h1>Blog e Notícias</h1>
+        <p>Mantenha-se atualizado com as últimas novidades, análises e tendências do mundo da cibersegurança. Conhecimento é a sua primeira linha de defesa.</p>
+    </section>
+
+    <section class="blog-section">
+        <div id="blog-posts-container" class="blog-post-grid">
+            <p class="loading-message">Carregando notícias do blog...</p>
+        </div>
+    </section>
+    <footer class="footer">
+        <div>
+            <p style="color: var(--color-primary); font-size: 1.1em; margin-bottom: 10px;">Contato</p>
+            <p>contato@dsr9.com</p>
+            <p>+55 (11) 3628-7880</p>
+            <p>Av. Paulista, 2028 - 11º andar - São Paulo - SP</p>
+        </div>
+        <div>
+            <p style="color: var(--color-primary); font-size: 1.1em; margin-bottom: 10px;">Acesso Rápido</p>
+            <nav class="footer-nav">
+                <a href="index.html">Início</a>
+                <a href="index.html#solucoes">Soluções</a>
+                <a href="blog.html">Blog</a>
+                <a href="index.html#sobre">Sobre</a>
+                <a href="https://www.linkedin.com/company/dsr9/jobs/" target="_blank">Trabalhe Conosco</a>
+            </nav>
+        </div>
+        <div class="footer-bottom">
+             <p>Copyright © 2025 DSR9 . <a href="politica-privacidade.html">Política de Privacidade</a> .</p>
+             <div class="social-links">
+                <a href="https://www.linkedin.com/company/dsr9" aria-label="LinkedIn da DSR9"><i class="fab fa-linkedin"></i></a>
+                <a href="#" aria-label="Instagram da DSR9"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="Facebook da DSR9"><i class="fab fa-facebook"></i></a>
+             </div>
+        </div>
+    </footer>
+    <script src="./script/script.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const rssUrl = 'https://dsr9.com/blog/feed/'; // URL do feed RSS do blog
+            const container = document.getElementById('blog-posts-container');
+            const CORS_PROXY = 'https://api.rss2json.com/v1/api.json?rss_url=';
+
+            // Adicionamos a função de tratamento de clique
+            window.loadPost = function(index, itemLink) {
+                const postData = JSON.parse(localStorage.getItem('dsr9_blog_posts'))[index];
+                
+                // Salva o post específico que será carregado na próxima página
+                localStorage.setItem('dsr9_current_post', JSON.stringify(postData));
+
+                // Se o item for externo (sem conteúdo completo no feed), redireciona diretamente
+                if (postData.content.length < 500) { // Exemplo: se o conteúdo for muito curto, vai para o link original
+                    window.open(itemLink, '_blank');
+                } else {
+                    // Redireciona para a página de visualização do post local
+                    window.location.href = 'post.html';
+                }
+            };
+
+            // Função para extrair a primeira imagem do conteúdo
+            function extractImage(content) {
+                const tempDiv = document.createElement('div');
+                tempDiv.innerHTML = content;
+                const img = tempDiv.querySelector('img');
+                return img ? img.src : './assets/placeholder/default-blog.jpg';
+            }
+
+            // Função para formatar a data
+            function formatDate(dateString) {
+                const options = { day: 'numeric', month: 'long', year: 'numeric' };
+                return new Date(dateString).toLocaleDateString('pt-BR', options);
+            }
+            
+            // Função para limpar tags HTML do snippet
+            function cleanSnippet(html) {
+                const tempDiv = document.createElement('div');
+                tempDiv.innerHTML = html;
+                let text = tempDiv.textContent || tempDiv.innerText || "";
+                text = text.replace(/\s+/g, ' ').trim();
+                return text.substring(0, 150) + '...';
+            }
+            
+            // Função principal de busca
+            fetch(CORS_PROXY + encodeURIComponent(rssUrl))
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`Erro de rede: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    container.innerHTML = '';
+                    
+                    if (data.status !== 'ok' || !data.items || data.items.length === 0) {
+                        container.innerHTML = '<p class="loading-message">Não foi possível carregar os posts do blog no momento.</p>';
+                        return;
+                    }
+                    
+                    // Salva todos os posts no localStorage
+                    localStorage.setItem('dsr9_blog_posts', JSON.stringify(data.items));
+
+                    data.items.slice(0, 6).forEach((item, index) => { // Limita aos 6 posts
+                        const postLink = item.link;
+                        const postTitle = item.title;
+                        const postDate = formatDate(item.pubDate);
+                        const postSnippet = cleanSnippet(item.description || item.content);
+                        let imageUrl = item.thumbnail || extractImage(item.content);
+
+                        // O link agora chama a função loadPost
+                        const postCard = `
+                            <div class="blog-post-card">
+                                <img src="${imageUrl}" alt="Imagem de capa do post: ${postTitle}" onerror="this.onerror=null;this.src='./assets/placeholder/default-blog.jpg';">
+                                <div class="card-content">
+                                    <p class="date">${postDate}</p>
+                                    <h3><a href="#" onclick="loadPost(${index}, '${postLink}'); return false;">${postTitle}</a></h3>
+                                    <p class="snippet">${postSnippet}</p>
+                                    <a href="#" onclick="loadPost(${index}, '${postLink}'); return false;" class="read-more">Leia Mais <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        `;
+                        container.innerHTML += postCard;
+                    });
+                })
+                .catch(error => {
+                    console.error('Erro ao buscar o RSS:', error);
+                    container.innerHTML = '<p class="loading-message">Erro ao carregar o feed de notícias. Verifique o console para mais detalhes.</p>';
+                });
+        });
+    </script>
+</body>
+</html>

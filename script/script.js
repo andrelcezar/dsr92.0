@@ -3,17 +3,15 @@
 document.addEventListener('DOMContentLoaded', function() {
     
     // ===================================
-    // 1. NAVEGAÇÃO RESPONSIVA (MENU TOGGLE) - CORRIGIDO
+    // 1. NAVEGAÇÃO RESPONSIVA (MENU TOGGLE)
     // ===================================
     const menuToggle = document.querySelector('.menu-toggle');
     const navMenu = document.querySelector('.nav-menu');
 
     if (menuToggle && navMenu) {
         menuToggle.addEventListener('click', function() {
-            // Alterna a classe 'active' no menu de navegação
+            // Alterna a classe 'active' e o aria-expanded para acessibilidade
             navMenu.classList.toggle('active');
-            
-            // Verifica o estado atual para atualizar o aria-expanded para acessibilidade
             const isExpanded = navMenu.classList.contains('active');
             menuToggle.setAttribute('aria-expanded', isExpanded);
 
@@ -29,10 +27,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Fecha o menu se um link for clicado (útil para navegação de seção única)
+    // Fecha o menu se um link for clicado (para navegação de seção única)
     navMenu.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
-            // Condição: Se o menu estiver ativo E a tela for considerada mobile (<= 768px)
             if (navMenu.classList.contains('active') && window.innerWidth <= 768) {
                 navMenu.classList.remove('active');
                 menuToggle.setAttribute('aria-expanded', 'false'); // Atualiza acessibilidade
@@ -60,30 +57,29 @@ document.addEventListener('DOMContentLoaded', function() {
     function animateCounter(element, target) {
         const startTimestamp = performance.now();
         const duration = 2000; // 2 segundos
+        // Verifica se a descrição do contador tem '+' para adicionar no final
         const hasPlus = element.parentElement.querySelector('p').textContent.includes('+');
 
         function step(timestamp) {
             const elapsed = timestamp - startTimestamp;
-            const progress = Math.min(elapsed / duration, 1); // Garante que o progresso não exceda 1
+            const progress = Math.min(elapsed / duration, 1);
             const currentCount = Math.floor(progress * target);
             
-            // Atualiza o texto do elemento
+            // Atualiza o texto, adicionando o '+' se for o final
             element.textContent = hasPlus && progress === 1 ? currentCount + ' +' : currentCount;
 
-            // Continua a animação se o progresso for menor que 1
             if (progress < 1) {
                 requestAnimationFrame(step);
             }
         }
 
-        // Inicia o loop de animação
         requestAnimationFrame(step);
     }
 
     const observerOptions = {
-        root: null, // viewport
+        root: null,
         rootMargin: '0px',
-        threshold: 0.5 // Aciona quando 50% do elemento estiver visível
+        threshold: 0.5 
     };
 
     const counterObserver = new IntersectionObserver((entries, observer) => {
@@ -98,7 +94,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }, observerOptions);
 
-    // Observa cada caixa de contador
     counterBoxes.forEach(box => {
         counterObserver.observe(box);
     });
@@ -112,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function() {
     contactForm.addEventListener('submit', function(e) {
         e.preventDefault();
         
-        // Desabilita o botão para evitar múltiplos envios
+        // Desabilita o botão para evitar múltiplos envios e dar feedback
         const submitButton = contactForm.querySelector('button[type="submit"]');
         submitButton.disabled = true;
         submitButton.textContent = 'Enviando...';
@@ -133,15 +128,22 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // ===================================
-    // 4. SLIDER DE CERTIFICAÇÕES (CARROSSEL INFINITO)
+    // 4. SLIDERS DE CARROSSEL INFINITO (CERTIFICAÇÕES E PARCEIROS)
     // ===================================
+    
+    // Slider de Certificações (DNA Técnico)
     const certSliderTrack = document.querySelector('.cert-slider-track');
-
     if (certSliderTrack) {
-        // ESSENCIAL para o efeito de loop infinito baseado em animação CSS (slideCert).
-        // Duplica o conteúdo do track para que a animação possa se deslocar
-        // 50% (a largura do conteúdo original) e reiniciar de forma imperceptível.
-        const images = certSliderTrack.innerHTML;
-        certSliderTrack.innerHTML += images; 
+        // Duplica o conteúdo do track. ESSENCIAL para o loop CSS (@keyframes slideCert)
+        const certImages = certSliderTrack.innerHTML;
+        certSliderTrack.innerHTML += certImages; 
+    }
+
+    // Slider de Parceiros
+    // Ajuste: Duplica o conteúdo do track de parceiros para funcionar com a animação CSS (@keyframes slide)
+    const partnerSliderTrack = document.querySelector('.partners-section .carousel-track');
+    if (partnerSliderTrack) {
+        const partnerLogos = partnerSliderTrack.innerHTML;
+        partnerSliderTrack.innerHTML += partnerLogos; 
     }
 });

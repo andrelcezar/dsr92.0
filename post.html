@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="post-title-tag">Detalhes do Post | DSR9 Blog</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/blog.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        .post-container {
+            padding: 150px 5% 80px 5%;
+            max-width: 900px;
+            margin: 0 auto;
+            color: #ccc;
+        }
+
+        .post-container h1 {
+            color: var(--color-primary);
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+        
+        .post-meta {
+            color: #888;
+            font-size: 0.9em;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 15px;
+        }
+
+        .post-content p {
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        /* Estilos para o conteúdo injetado do RSS (imagens, listas, etc.) */
+        .post-content img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+            border-radius: 8px;
+            border: 1px solid #333;
+        }
+        
+        .post-content a {
+            color: var(--color-secondary);
+        }
+
+        .post-content h2, .post-content h3 {
+            color: var(--color-light);
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+        
+        .post-content ul, .post-content ol {
+            margin-left: 30px;
+            margin-bottom: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .post-container {
+                padding-top: 100px;
+            }
+            .post-container h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+    <div class="logo">
+        <a href="index.html">
+           <img src="./assets/logo/dsr903.png" width="250px" alt="Logo DSR9 - Cibersegurança">
+        </a>
+    </div>
+    
+    <button class="menu-toggle" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <nav class="nav-menu">
+        <a href="index.html">Home</a>
+        <a href="index.html#sobre">Sobre a DSR9</a> 
+        <a href="index.html#solucoes">Soluções</a> 
+        <a href="index.html#servicos">Serviços Especializados</a> 
+        <a href="index.html#contato">Contato</a> 
+        <a href="blog.html">Blog</a>
+        <a href="index.html#contato" class="cta-mdr" hidden>MDR</a>
+    </nav>
+    </header>
+    <main class="post-container">
+        <h1 id="post-title"></h1>
+        <p class="post-meta" id="post-meta"></p>
+        <div class="post-content" id="post-content">
+            <p>Carregando conteúdo...</p>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div>
+            <p style="color: var(--color-primary); font-size: 1.1em; margin-bottom: 10px;">Contato</p>
+            <p>contato@dsr9.com</p>
+            <p>+55 (11) 3628-7880</p>
+            <p>Av. Paulista, 2028 - 11º andar - São Paulo - SP</p>
+        </div>
+        <div>
+            <p style="color: var(--color-primary); font-size: 1.1em; margin-bottom: 10px;">Acesso Rápido</p>
+            <nav class="footer-nav">
+                <a href="index.html">Início</a>
+                <a href="index.html#solucoes">Soluções</a>
+                <a href="blog.html">Blog</a>
+                <a href="index.html#sobre">Sobre</a>
+                <a href="https://www.linkedin.com/company/dsr9/jobs/" target="_blank">Trabalhe Conosco</a>
+            </nav>
+        </div>
+        <div class="footer-bottom">
+             <p>Copyright © 2025 DSR9 . <a href="politica-privacidade.html">Política de Privacidade</a> .</p>
+             <div class="social-links">
+                <a href="https://www.linkedin.com/company/dsr9" aria-label="LinkedIn da DSR9"><i class="fab fa-linkedin"></i></a>
+                <a href="#" aria-label="Instagram da DSR9"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="Facebook da DSR9"><i class="fab fa-facebook"></i></a>
+             </div>
+        </div>
+    </footer>
+    <script src="./script/script.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const postData = JSON.parse(localStorage.getItem('dsr9_current_post'));
+            const postTitleElement = document.getElementById('post-title');
+            const postMetaElement = document.getElementById('post-meta');
+            const postContentElement = document.getElementById('post-content');
+            const titleTagElement = document.getElementById('post-title-tag');
+
+            if (postData) {
+                // Função para formatar a data (reutilizada do blog.html)
+                const formatDate = (dateString) => {
+                    const options = { day: 'numeric', month: 'long', year: 'numeric' };
+                    return new Date(dateString).toLocaleDateString('pt-BR', options);
+                };
+                
+                // Atualiza o título da página e o título principal
+                titleTagElement.textContent = postData.title + ' | DSR9 Blog';
+                postTitleElement.innerHTML = postData.title;
+                
+                // Atualiza a metainformação (data e autor)
+                postMetaElement.innerHTML = `${formatDate(postData.pubDate)} | Por: ${postData.author || 'DSR9'}`;
+                
+                // Injete o conteúdo completo do post (com todas as tags HTML)
+                postContentElement.innerHTML = postData.content;
+                
+                // Opcional: Adiciona um link no final do post para o artigo original
+                const originalLink = document.createElement('p');
+                originalLink.innerHTML = `<a href="${postData.link}" target="_blank" style="display: block; margin-top: 40px; text-align: right; color: var(--color-secondary);">Ver artigo original na fonte <i class="fas fa-external-link-alt"></i></a>`;
+                postContentElement.appendChild(originalLink);
+
+            } else {
+                postTitleElement.innerHTML = 'Artigo não encontrado';
+                postMetaElement.innerHTML = 'Você pode ter acessado esta página diretamente ou o post expirou.';
+                postContentElement.innerHTML = '<p>Por favor, volte para a <a href="blog.html">página do blog</a> para selecionar um artigo.</p>';
+            }
+        });
+    </script>
+</body>
+</html>
