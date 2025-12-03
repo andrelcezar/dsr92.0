@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home • DSR9 - Cibersegurança e Serviços Gerenciados</title>
+    <title>DSR9 - Cibersegurança, Serviços Gerenciados e MDR</title>
+    
+    <meta name="description" content="Especialistas em Monitoração, Detecção e Resposta (MDR) a incidentes de Cibersegurança. Proteção abrangente e excelência técnica para ambientes complexos.">
+    <meta name="keywords" content="Cibersegurança, MDR, Serviços Gerenciados, Ransomware, Zero Trust, LGPD, Observabilidade">
     
     <link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet">
     
@@ -15,18 +18,19 @@
     <header class="header">
         <div class="logo">
             <a href="#">
-               <img src="./assets/logo/dsr903.png" width="250px">
+               <img src="./assets/logo/dsr903.png" width="250px" alt="Logo DSR9 - Cibersegurança">
             </a>
         </div>
         
-        <button class="menu-toggle" aria-label="Toggle navigation">
+        <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
             <i class="fas fa-bars"></i>
         </button>
 
         <nav class="nav-menu">
             <a href="#" class="active">Home</a>
+            <a href="#sobre">Sobre a DSR9</a>
             <a href="#solucoes">Soluções</a>
-            <a href="#servicos">Serviços Especializados</a>
+            <a href="#servicos">Serviços Especializados</a> 
             <a href="#contato">Contato</a>
             <a href="#blog">Blog</a>
             <a href="#contato" class="cta-mdr">MDR</a>
@@ -34,12 +38,48 @@
     </header>
 
     <section class="hero-section">
+        <h1>CIBERSEGURANÇA COM FOCO EM DETECÇÃO E RESPOSTA (MDR)</h1>
         <h2>A GENTE MONITORA, DETECTA E RESPONDE.</h2>
         <p>Monitoração abrangente de eventos de segurança, detecção qualificada de anomalias e resposta eficaz a incidentes.</p>
         
         <div class="hero-ctas">
             <a href="#contato" class="btn btn-primary">FALE COM UM ESPECIALISTA</a>
             <a href="#solucoes" class="btn btn-secondary">ENCONTRE A SOLUÇÃO CERTA</a>
+        </div>
+    </section>
+
+    <section class="about-section" id="sobre">
+        <h2>SOBRE A DSR9</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>
+                    Com **mais de 15 anos de expertise** no mercado de tecnologia, a DSR9 se estabeleceu como uma empresa especializada em **Cibersegurança e Serviços Gerenciados**. Nosso foco é proteger ambientes complexos com a mais alta excelência técnica.
+                </p>
+                <p>
+                    Nosso compromisso principal é com a **monitoração, detecção e resposta eficaz** a incidentes de segurança. Trabalhamos para ir além da simples prevenção, oferecendo uma resposta qualificada a anomalias para garantir a continuidade dos negócios.
+                </p>
+                <p>
+                    Valorizamos profundamente nosso **DNA Técnico**. Nossa equipe é composta por colaboradores altamente certificados, com mais de **1.000+ horas de treinamento e certificações**, garantindo o mais alto primor técnico em todas as nossas soluções.
+                </p>
+                <a href="#contato" class="btn btn-primary">FALE COM NOSSO TIME</a>
+            </div>
+            <div class="about-stats">
+                <div class="stat-item">
+                    <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                    <h3>Foco 100%</h3>
+                    <p>Em Cibersegurança</p>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-handshake" aria-hidden="true"></i>
+                    <h3>Parcerias Estratégicas</h3>
+                    <p>Com os maiores fabricantes do mundo, como CyberArk, CrowdStrike e Microsoft.</p>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-award" aria-hidden="true"></i>
+                    <h3>Excelência Técnica</h3>
+                    <p>Equipe com certificações de alto nível (Cisco, CrowdStrike, ISO 27001, entre outras).</p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -67,65 +107,105 @@
         <div class="solutions-grid">
             <div class="solution-card">
                 <h3>Defesa contra Ransomware</h3>
-                <p>Proteção multicamadas que utiliza a expertise do nosso MDR.</p>
-                <a href="#">Saiba Mais <i class="fas fa-arrow-right"></i></a>
+                <p>Proteger proativamente os dados e assegurar a capacidade de recuperação instantânea frente ao sequestro digital.</p>
+                <a href="#contato">Saiba Mais <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
             </div>
              <div class="solution-card">
                 <h3>LGPD</h3>
-                <p>Consultoria e soluções para garantir a conformidade com a Lei Geral de Proteção de Dados.</p>
-                <a href="#">Saiba Mais <i class="fas fa-arrow-right"></i></a>
+                <p>O marco legal que define como os dados pessoais devem ser coletados, armazenados e usados no Brasil.</p>
+                <a href="#contato">Saiba Mais <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
             </div>
              <div class="solution-card">
                 <h3>Observabilidade</h3>
-                <p>Visibilidade completa da infraestrutura para antecipar e resolver problemas de segurança.</p>
-                <a href="#">Saiba Mais <i class="fas fa-arrow-right"></i></a>
+                <p>Entender o desempenho do sistema através da coleta e análise de métricas, logs e traces.</p>
+                <a href="#contato">Saiba Mais <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
             </div>
+            
         </div>
-        
-        <div class="solutions-cta">
-            <p>Temos soluções em Zero Trust Access, Segurança de Identidades e Security Awareness.</p>
-            <a href="#" class="btn btn-primary-small">VER TODAS AS SOLUÇÕES</a>
-        </div>
+
+        <div class="solutions-grid">
+            <div class="solution-card">
+                <h3>Zero trust Access</h3>
+                <p>Nunca confie, sempre verifique.</p>
+                <a href="#contato">Saiba Mais <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+            </div>
+            <div class="solution-card">
+                <h3>Segurança de Identidade</h3>
+                <p>O novo perímetro: autenticar, autorizar e proteger quem acessa o quê.</p>
+                <a href="#contato">Saiba Mais <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+            </div>
+            <div class="solution-card">
+                <h3>Segurança Ofensiva & Awareness</h3>
+                <p>Atacar para testar e treinar para defender: fortalecendo sistemas e pessoas.</p>
+                <a href="#contato">Saiba Mais <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+            </div>
+        </div>    
+       
     </section>
     
     <section class="partners-section">
-        <h2>NOSSOS PARCEIROS</h2>
-        <p class="trust-title">Com expertise de mais de 15 anos, contamos com parcerias estratégicas com os maiores fabricantes.</p>
+        <h2>NOSSOS PARCEIROS E TECNOLOGIAS</h2>
+        <p class="trust-title">Com expertise de mais de 15 anos, contamos com parcerias estratégicas com os maiores fabricantes do mundo.</p>
         
         <div class="carousel-container">
             <div class="carousel-track">
-                <span class="partner-logo">CyberArk</span>
-                <span class="partner-logo">CrowdStrike</span>
-                <span class="partner-logo">Symantec</span>
-                <span class="partner-logo">Palo Alto</span>
-                <span class="partner-logo">Microsoft</span>
-                <span class="partner-logo">SentinelOne</span>
-                <span class="partner-logo">Forcepoint</span>
+                <span class="partner-logo" role="img" aria-label="Logo CyberArk">CyberArk</span>
+                <span class="partner-logo" role="img" aria-label="Logo CrowdStrike">CrowdStrike</span>
+                <span class="partner-logo" role="img" aria-label="Logo Symantec">Symantec</span>
+                <span class="partner-logo" role="img" aria-label="Logo Palo Alto">Palo Alto</span>
+                <span class="partner-logo" role="img" aria-label="Logo Microsoft">Microsoft</span>
+                <span class="partner-logo" role="img" aria-label="Logo SentinelOne">SentinelOne</span>
+                <span class="partner-logo" role="img" aria-label="Logo Forcepoint">Forcepoint</span>
             </div>
              <div class="carousel-track">
-                 <span class="partner-logo">CyberArk</span>
-                <span class="partner-logo">CrowdStrike</span>
-                <span class="partner-logo">Symantec</span>
-                <span class="partner-logo">Palo Alto</span>
-                <span class="partner-logo">Microsoft</span>
-                <span class="partner-logo">SentinelOne</span>
-                <span class="partner-logo">Forcepoint</span>
+                 <span class="partner-logo" role="img" aria-label="Logo CyberArk">CyberArk</span>
+                <span class="partner-logo" role="img" aria-label="Logo CrowdStrike">CrowdStrike</span>
+                <span class="partner-logo" role="img" aria-label="Logo Symantec">Symantec</span>
+                <span class="partner-logo" role="img" aria-label="Logo Palo Alto">Palo Alto</span>
+                <span class="partner-logo" role="img" aria-label="Logo Microsoft">Microsoft</span>
+                <span class="partner-logo" role="img" aria-label="Logo SentinelOne">SentinelOne</span>
+                <span class="partner-logo" role="img" aria-label="Logo Forcepoint">Forcepoint</span>
             </div>
         </div>
     </section>
 
     <section class="dna-section" id="servicos">
-        <h2>NOSSO DNA É TÉCNICO</h2>
-        <p class="dna-text">Somos especializados em Cibersegurança. Nossos colaboradores são altamente certificados e dedicados ao mais alto primor técnico.</p>
+    <h2>NOSSO DNA É TÉCNICO</h2>
+    <p class="dna-text">Somos especializados em Cibersegurança. Nossos colaboradores são altamente certificados e dedicados ao mais alto primor técnico.</p>
+    
+    <div class="dna-info">
+        <div class="dna-stats">
+            <div class="counter-number" style="font-size: 4em; color: var(--color-secondary);">1.000+</div>
+            <p>Horas de Treinamento e Certificações</p>
+        </div>
         
-        <div class="dna-info">
-            <div class="dna-stats">
-                <div class="counter-number" style="font-size: 4em; color: var(--color-secondary);">1.000+</div>
-                <p>Horas de Treinamento e Certificações</p>
-            </div>
-            <div class="dna-certs">
-                 <i class="fas fa-award"></i> Cert. Cisco | <i class="fas fa-award"></i> Cert. CrowdStrike | <i class="fas fa-award"></i> Cert. CyberArk | <i class="fas fa-award"></i> Cert. ISO 27001
-            </div>
+        <div class="cert-slider-container">
+            <div class="cert-slider-track">
+                <img src="./assets/cert/cert01.png" alt="Certificação de Segurança 1">
+                <img src="./assets/cert/cert02.png" alt="Certificação de Segurança 2">
+                <img src="./assets/cert/cert03.png" alt="Certificação de Segurança 3">
+                <img src="./assets/cert/cert04.png" alt="Certificação de Segurança 4">
+                <img src="./assets/cert/cert05.png" alt="Certificação de Segurança 5">
+                <img src="./assets/cert/cert06.png" alt="Certificação de Segurança 6">
+                <img src="./assets/cert/cert07.png" alt="Certificação de Segurança 7">
+                <img src="./assets/cert/cert08.png" alt="Certificação de Segurança 8">
+                <img src="./assets/cert/cert09.png" alt="Certificação de Segurança 9">
+                <img src="./assets/cert/cert10.png" alt="Certificação de Segurança 10">
+                <img src="./assets/cert/cert11.png" alt="Certificação de Segurança 11">
+                <img src="./assets/cert/cert12.png" alt="Certificação de Segurança 12">
+                <img src="./assets/cert/cert13.png" alt="Certificação de Segurança 13">
+                <img src="./assets/cert/cert14.png" alt="Certificação de Segurança 14">
+                <img src="./assets/cert/cert15.png" alt="Certificação de Segurança 15">
+                <img src="./assets/cert/cert16.png" alt="Certificação de Segurança 16">
+                <img src="./assets/cert/cert17.png" alt="Certificação de Segurança 17">
+                <img src="./assets/cert/cert18.png" alt="Certificação de Segurança 18">
+                <img src="./assets/cert/cert19.png" alt="Certificação de Segurança 19">
+                <img src="./assets/cert/cert20.png" alt="Certificação de Segurança 20">
+                <img src="./assets/cert/cert21.png" alt="Certificação de Segurança 21">
+                <img src="./assets/cert/cert22.png" alt="Certificação de Segurança 22">
+                <img src="./assets/cert/cert23.png" alt="Certificação de Segurança 23">
+                </div>
+        </div>
         </div>
     </section>
 
@@ -154,49 +234,49 @@
     <section class="contact-form-section" id="contato">
     <h2>NÃO ENCONTROU O QUE PRECISAVA? FALE COM UM ESPECIALISTA.</h2>
     <form id="contact-form">
-        <input type="text" name="name" placeholder="Seu Nome Completo" required>
-        <input type="email" name="email" placeholder="Seu E-mail Corporativo" required>
-        <input type="text" name="company" placeholder="Nome da Sua Empresa" required>
-        <select name="service" required>
+        <input type="text" name="name" placeholder="Seu Nome Completo" required autocomplete="name" aria-label="Seu Nome Completo">
+        <input type="email" name="email" placeholder="Seu E-mail Corporativo" required autocomplete="email" aria-label="Seu E-mail Corporativo">
+        <input type="text" name="company" placeholder="Nome da Sua Empresa" required autocomplete="organization" aria-label="Nome da Sua Empresa">
+        <select name="service" required aria-label="Interesse Principal">
             <option value="">Interesse Principal...</option>
             <option value="MDR">Serviços Gerenciados (MDR)</option>
             <option value="Ransomware">Defesa contra Ransomware</option>
             <option value="Consultoria">Consultoria e LGPD</option>
             <option value="Outro">Outro</option>
         </select>
-        <textarea name="message" placeholder="Sua Mensagem / Detalhes" rows="5"></textarea>
+        <textarea name="message" placeholder="Sua Mensagem / Detalhes" rows="5" aria-label="Sua Mensagem / Detalhes"></textarea>
         <button type="submit" class="btn btn-primary">ENVIAR SOLICITAÇÃO</button>
-        <p class="form-status" id="form-message"></p>
+        <p class="form-status" id="form-message" role="status" aria-live="polite"></p>
     </form>
 </section>
 
-<footer class="footer">
-    <div>
-        <p style="color: var(--color-primary); font-size: 1.1em; margin-bottom: 10px;">Contato</p>
-        <p>contato@dsr9.com</p>
-        <p>+55 (11) 3628-7880</p>
-        <p>Av. Paulista, 2028 - 11º andar - São Paulo - SP</p>
-    </div>
-    <div>
-        <p style="color: var(--color-primary); font-size: 1.1em; margin-bottom: 10px;">Acesso Rápido</p>
-        <nav class="footer-nav">
-            <a href="#">Início</a>
-            <a href="#solucoes">Soluções</a>
-            <a href="#blog">Blog</a>
-            <a href="#">Sobre</a>
-            <a href="#">Trabalhe Conosco</a>
-        </nav>
-    </div>
-    <div class="footer-bottom">
-         <p>Copyright © 2025 DSR9 . <a href="#">Política de Privacidade</a> .</p>
-         <div class="social-links">
-            <a href="#"><i class="fab fa-linkedin"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-facebook"></i></a>
-         </div>
-    </div>
-</footer>
+    <footer class="footer">
+        <div>
+            <p style="color: var(--color-primary); font-size: 1.1em; margin-bottom: 10px;">Contato</p>
+            <p><a href="mailto:contato@dsr9.com">contato@dsr9.com</a></p>
+            <p><a href="tel:+551136287880">+55 (11) 3628-7880</a></p>
+            <p>Av. Paulista, 2028 - 11º andar - São Paulo - SP</p>
+        </div>
+        <div>
+            <p style="color: var(--color-primary); font-size: 1.1em; margin-bottom: 10px;">Acesso Rápido</p>
+            <nav class="footer-nav">
+                <a href="#">Início</a>
+                <a href="#solucoes">Soluções</a>
+                <a href="#blog">Blog</a>
+                <a href="#sobre">Sobre</a>
+                <a href="#">Trabalhe Conosco</a>
+            </nav>
+        </div>
+        <div class="footer-bottom">
+             <p>Copyright © 2025 DSR9 . <a href="#">Política de Privacidade</a> .</p>
+             <div class="social-links">
+                <a href="#" aria-label="LinkedIn da DSR9"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+                <a href="#" aria-label="Instagram da DSR9"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                <a href="#" aria-label="Facebook da DSR9"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+             </div>
+        </div>
+    </footer>
 
-    <script src="./script/script.js"></script>
+    <script src="./script/script.js" defer></script>
 </body>
 </html>
