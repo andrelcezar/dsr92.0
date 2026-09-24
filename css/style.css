@@ -665,6 +665,13 @@ a {
     font-weight: bold;
 }
 
+.form-hint {
+    color: #888;
+    font-size: 0.85em;
+    text-align: left;
+    margin-top: -10px;
+}
+
 /* ======================== */
 /* 10. FOOTER                */
 /* ======================== */
@@ -711,7 +718,7 @@ a {
 
 .footer-bottom p {
     font-size: 0.8em;
-    color: #666;
+    color: #999; /* #666 tinha contraste ~3.7:1 sobre fundo preto, abaixo do mínimo AA (4.5:1) */
 }
 
 .social-links a {
