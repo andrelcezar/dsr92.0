@@ -99,33 +99,50 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // ===================================
-    // 3. FORMULÁRIO DE CONTATO (SIMULAÇÃO DE ENVIO)
+    // 3. FORMULÁRIO DE CONTATO (ENVIO VIA MAILTO)
     // ===================================
+    // Site 100% estático, sem backend próprio: o envio abre o cliente de
+    // e-mail do visitante com os dados preenchidos, em vez de simular sucesso
+    // sem entregar o lead a ninguém.
     const contactForm = document.getElementById('contact-form');
     const formMessage = document.getElementById('form-message');
+    const CONTACT_EMAIL = 'contato@dsr9.com';
 
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Desabilita o botão para evitar múltiplos envios e dar feedback
-        const submitButton = contactForm.querySelector('button[type="submit"]');
-        submitButton.disabled = true;
-        submitButton.textContent = 'Enviando...';
+    if (contactForm && formMessage) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
 
-        formMessage.style.color = 'var(--color-primary)';
-        formMessage.textContent = 'Enviando solicitação...';
-        
-        setTimeout(() => {
-            // Simula o sucesso do envio
+            const data = new FormData(contactForm);
+            const name = (data.get('name') || '').trim();
+            const email = (data.get('email') || '').trim();
+            const company = (data.get('company') || '').trim();
+            const service = (data.get('service') || '').trim();
+            const message = (data.get('message') || '').trim();
+
+            const subject = `Contato via site - ${company || name}`;
+            const body =
+                `Nome: ${name}\n` +
+                `E-mail: ${email}\n` +
+                `Empresa: ${company}\n` +
+                `Interesse principal: ${service}\n\n` +
+                `Mensagem:\n${message || '(não informado)'}`;
+
+            const mailtoLink = `mailto:${CONTACT_EMAIL}` +
+                `?subject=${encodeURIComponent(subject)}` +
+                `&body=${encodeURIComponent(body)}`;
+
             formMessage.style.color = 'var(--color-secondary)';
-            formMessage.textContent = '✅ Solicitação enviada com sucesso! Um especialista DSR9 entrará em contato em breve.';
-            contactForm.reset();
-            
-            // Restaura o botão
-            submitButton.disabled = false;
-            submitButton.textContent = 'ENVIAR SOLICITAÇÃO';
-        }, 2000);
-    });
+            formMessage.textContent = 'Abrindo seu aplicativo de e-mail para concluir o envio...';
+
+            window.location.href = mailtoLink;
+
+            setTimeout(() => {
+                formMessage.textContent =
+                    `Se o e-mail não abriu automaticamente, envie sua mensagem para ${CONTACT_EMAIL}.`;
+                contactForm.reset();
+            }, 1500);
+        });
+    }
 
     // ===================================
     // 4. SLIDERS DE CARROSSEL INFINITO (CERTIFICAÇÕES E PARCEIROS)
