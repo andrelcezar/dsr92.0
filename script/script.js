@@ -57,8 +57,9 @@ document.addEventListener('DOMContentLoaded', function() {
     function animateCounter(element, target) {
         const startTimestamp = performance.now();
         const duration = 2000; // 2 segundos
-        // Verifica se a descrição do contador tem '+' para adicionar no final
-        const hasPlus = element.parentElement.querySelector('p').textContent.includes('+');
+        // O '+' vem no próprio texto inicial do contador (ex.: "0 +"), então
+        // precisa ser lido antes que a animação sobrescreva element.textContent.
+        const hasPlus = element.textContent.includes('+');
 
         function step(timestamp) {
             const elapsed = timestamp - startTimestamp;

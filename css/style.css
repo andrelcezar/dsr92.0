@@ -384,18 +384,30 @@ a {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    min-width: 100%; 
-    animation: slide 30s linear infinite; 
-    opacity: 0.7;
+    min-width: 100%;
+    animation: slide 30s linear infinite;
 }
 
 .partner-logo {
-    display: inline-block;
-    padding: 0 40px; 
-    font-size: 1.2em;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 12px;
+    padding: 16px 32px;
+    font-size: 1.1em;
     font-weight: bold;
-    color: #444; 
+    color: #888;
+    background-color: var(--color-bg-section);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
     flex-shrink: 0;
+    transition: color 0.3s, border-color 0.3s, background-color 0.3s;
+}
+
+.partner-logo:hover {
+    color: var(--color-light);
+    background-color: #1a1a1a;
+    border-color: var(--color-primary);
 }
 
 /* Ajuste Chave: Move 50% para um loop contínuo (o JS duplica o conteúdo) */
@@ -443,25 +455,30 @@ a {
 /* Estilos do Slider de Certificações (carrossel infinito) */
 .cert-slider-container {
     width: 100%;
-    overflow: hidden; 
+    overflow: hidden;
     margin: 40px auto 0;
-    max-width: 1000px;
+    max-width: 1100px;
+    padding: 30px 0;
+    background-color: var(--color-bg-dark);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
 }
 
 .cert-slider-track {
     display: flex;
-    animation: slideCert 40s linear infinite; 
+    align-items: center;
+    animation: slideCert 40s linear infinite;
     white-space: nowrap;
 }
 
 .cert-slider-track img {
-    height: 90px; 
+    height: 110px;
     width: auto;
-    margin: 0 20px;
+    margin: 0 25px;
     object-fit: contain;
-    filter: grayscale(100%) opacity(0.6); 
+    filter: grayscale(100%) opacity(0.6);
     transition: filter 0.5s;
-    flex-shrink: 0; 
+    flex-shrink: 0;
 }
 
 .cert-slider-track img:hover {
@@ -738,13 +755,49 @@ a {
 /* 11. MEDIA QUERIES (RESPONSIVIDADE) */
 /* ======================== */
 
+/* Menu hambúrguer a partir de 1200px: com os 6 itens do menu (incluindo
+   "Serviços Especializados"), o nav horizontal já quebra linha e empurra
+   "Blog" para fora da tela entre ~769px e ~1180px — bem antes do que os
+   breakpoints de 1024px/768px abaixo cobririam. */
+@media (max-width: 1200px) {
+    .menu-toggle {
+        display: block;
+        margin-left: auto;
+        z-index: 1001;
+    }
+
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: var(--color-dark);
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 20px 0;
+        z-index: 999;
+        text-align: center;
+    }
+
+    .nav-menu.active {
+        display: flex;
+    }
+
+    .nav-menu a {
+        width: 100%;
+        padding: 10px 0;
+        border-bottom: none;
+    }
+
+    .cta-mdr {
+        margin-top: 15px;
+    }
+}
+
 /* Estilos para TABLETS (Largura máxima: 1024px) */
 @media (max-width: 1024px) {
-    
-    .nav-menu {
-        gap: 15px;
-    }
-    
+
     .hero-section h1 {
         font-size: 2.8em;
     }
@@ -774,48 +827,6 @@ a {
 
 /* Estilos para CELULARES (Largura máxima: 768px) */
 @media (max-width: 768px) {
-    
-    /* === NAVEGAÇÃO / HEADER === */
-    .header {
-        flex-direction: row; 
-        align-items: center;
-        padding: 15px 5%;
-        position: fixed; /* Mantido fixed para navegação melhor em mobile */
-    }
-
-    .menu-toggle {
-        display: block;
-        margin-left: auto; 
-        z-index: 1001;
-    }
-    
-    .nav-menu {
-        display: none; 
-        flex-direction: column;
-        width: 100%;
-        position: absolute;
-        top: 100%; 
-        left: 0;
-        background-color: var(--color-dark);
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-        padding: 20px 0;
-        z-index: 999;
-        text-align: center;
-    }
-
-    .nav-menu.active {
-        display: flex;
-    }
-
-    .nav-menu a {
-        width: 100%;
-        padding: 10px 0;
-        border-bottom: none;
-    }
-
-    .cta-mdr {
-        margin-top: 15px;
-    }
 
     /* === HERO === */
     .hero-section {
@@ -882,13 +893,19 @@ a {
     }
 
     .partner-logo {
-        padding: 0 20px; 
+        margin: 0 8px;
+        padding: 10px 20px;
         font-size: 1em;
     }
-    
+
+    .cert-slider-container {
+        padding: 20px 0;
+        border-radius: 8px;
+    }
+
     .cert-slider-track img {
-        height: 40px; 
-        margin: 0 10px;
+        height: 56px;
+        margin: 0 14px;
     }
     
     /* === RODAPÉ === */
